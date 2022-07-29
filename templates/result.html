@@ -1,13 +1,75 @@
-{% extends "layout.html" %}
-{% block content %}
-<div class="container">
-  <div class="col content">
-    <h1>判定結果</h1>
-    {{result}}
-    <p><img src="{{filepath}}"></p>
-    <form method="get" action="/">
-      <button class="submit">戻る</button>
-    </form>
-  </div>
+{% extends "layout.html" %} {% block content %}
+<!-- <div class="container">
+    <div class="col content">
+        <h1>判定結果</h1>
+        {{result}}
+        <p><img src="{{filepath}}"></p>
+        <form method="get" action="/">
+            <button class="submit">戻る</button>
+        </form>
+    </div>
+</div> -->
+
+
+<div class="container-fluid mt-3 maxWidth">
+    <div class="card text-center">
+        <div class="row">
+            <div class="col">
+                <div class="card-header">
+                    <p style="font-size:1.3rem">判定結果</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card-body">
+
+                <img src="{{filepath}}" class="d-block mx-auto img-fluid w-50 mb-4"> {{result}}
+                <form method="get" action="/">
+                    <button class="submit btn btn-outline-secondary btn-block">＜　戻る</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card mt-3  text-center">
+        <div class="row">
+            <div class="col">
+                <div class="card-header">
+                    <p style="font-size:1.3rem">ＡＩが分類できるもの一覧</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="card-body">
+                <p>ここにあるもの以外は分類することができないよ。ごめんね。</p>
+                <p>ラクダ 缶 城 毛虫 牛</p>
+                <p>ボウル 少年 橋 バス 蝶</p>
+                <p>少女 ハムスター 家 カンガルー</p>
+                <p>松 平野 皿 ポピー ヤマアラシ </p>
+                <p>ソファー カニ ワニ カップ 恐竜</p>
+                <p>リス 路面電車 ひまわり パプリカ</p>
+                <p>テーブル タンク 電話 テレビ トラ</p>
+                <p>柳 オオカミ 成人女性 ミミズ クモ</p>
+                <p>ヤシ 洋ナシ ピックアップトラック</p>
+                <p>コンピューターのキーボード ランプ</p>
+                <p>トラクター 電車 マス チューリップ</p>
+                <p>ヒョウ ライオン トカゲ ロブスター</p>
+                <p>カメ ワードローブ クジラ 芝刈り機</p>
+                <p>きのこ オーク オレンジ 蘭 カワウソ</p>
+                <p>ベッド 蜂 カブトムシ 自転車 ボトル</p>
+                <p>バラ 海 アザラシ サメ トガリネズミ</p>
+                <p> 椅子 チンパンジー 時計 雲 ゴキブリ</p>
+                <p>成人男性 もみじ オートバイ 山 ねずみ</p>
+                <p>りんご 観賞魚 赤ちゃん クマ ビーバー</p>
+                <p>ウサギ アライグマ エイ 道路 ロケット</p>
+                <p>イルカ 象 ヒラメ 森 キツネフクロネズミ</p>
+                <p>スカンク 超高層ビル カタツムリ ヘビ</p>
+
+            </div>
+        </div>
+    </div>
 </div>
+
 {% endblock %}
