@@ -1,5 +1,5 @@
 import os, shutil
-from flask import Flask, request, redirect, url_for, render_template, Markup
+from flask import Flask, request, redirect, url_for, render_template, Markup,send_from_directory
 from werkzeug.utils import secure_filename
 from tensorflow.keras.models import Sequential, load_model
 from PIL import Image
@@ -112,13 +112,17 @@ labels =  [
 ]
 n_class = len(labels)
 img_size = 32
-n_result = 5  # 上位3つの結果を表示
+n_result = 3  # 上位3つの結果を表示
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -161,7 +165,6 @@ def result():
             ratio = y[idx]
             label = labels[idx]
             result += "<p>" + str(round(ratio*100, 1)) + "%の確率で" + label + "です。</p>"
-            
         return render_template("result.html", result=Markup(result), filepath=filepath)
     else:
         return redirect(url_for("index"))
